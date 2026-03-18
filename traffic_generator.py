@@ -1,14 +1,13 @@
 import time
 import requests
-import json
 import random
+from concurrent.futures import ThreadPoolExecutor
 
 # Triton's HTTP endpoint
 URL = "http://localhost:8000/v2/models/simple_model/infer"
 
-# Define the payload structure
-def get_payload():
-    return {
+def send_request(_):
+    payload = {
         "inputs": [
             {
                 "name": "INPUT0",
@@ -18,23 +17,13 @@ def get_payload():
             }
         ]
     }
-
-def send_request():
     try:
-        response = requests.post(URL, data=json.dumps(get_payload()), timeout=5)
-        if response.status_code == 200:
-            print(f"[{time.strftime('%H:%M:%S')}] Success: {response.json()['outputs'][0]['data']}")
-        else:
-            print(f"Error {response.status_code}: {response.text}")
-    except Exception as e:
-        print(f"Connection failed: {e}")
+        requests.post(URL, json=payload, timeout=10)
+    except Exception:
+        pass
 
 if __name__ == "__main__":
-    print("Starting Triton traffic generator for 'simple_model'...")
-    try:
+    print("Starting 50-threaded Triton traffic generator...")
+    with ThreadPoolExecutor(max_workers=50) as executor:
         while True:
-            send_request()
-            # Send roughly 10 requests per second
-            time.sleep(0.1)
-    except KeyboardInterrupt:
-        print("\nStopping traffic generator.")
+            executor.map(send_request, range(50))

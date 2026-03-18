@@ -6,6 +6,8 @@ class TritonPythonModel:
         pass
 
     def execute(self, requests):
+        import time
+        time.sleep(1)
         responses = []
         for request in requests:
             input_tensor = pb_utils.get_input_tensor_by_name(request, "INPUT0")
