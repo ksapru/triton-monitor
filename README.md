@@ -31,7 +31,8 @@ This project provides tools to simulate traffic against a Triton Inference Serve
    ```
 
 2. **Setup Monitoring Infrastructure**
-   - Run a Prometheus instance configured to scrape metrics from Triton (`localhost:8002/metrics`).
+   - Run a Prometheus instance configured to scrape metrics from Triton (`localhost:8002/metrics`).<img width="1440" height="900" alt="Screenshot 2026-03-20 at 1 48 32 PM" src="https://github.com/user-attachments/assets/8c83fbde-5379-470a-818c-1ecfb56b0682" />
+
    - Import the `triton-dashboard.json` file into your Grafana instance and select your Prometheus data source to start visualizing the metrics.
 
 3. **Generate Synthetic Traffic**
