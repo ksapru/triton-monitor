@@ -1,4 +1,4 @@
-# Triton Monitor
+# Triton Inference Observability & Load Testing Platform
 
 A load testing and monitoring setup for [NVIDIA Triton Inference Server](https://developer.nvidia.com/triton-inference-server).
 
