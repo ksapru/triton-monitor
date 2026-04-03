@@ -155,6 +155,6 @@ python traffic_generator.py
 
 ---
 
-## 🧠 Why This Matters
+## Why This Matters
 
 This project demonstrates how GPU inference systems behave under real workloads, focusing on performance scaling, tail latency behavior, and system bottlenecks — critical challenges in modern AI infrastructure.
