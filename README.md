@@ -4,7 +4,7 @@ A GPU-based inference benchmarking and observability system built using NVIDIA T
 
 ---
 
-## 🚀 Overview
+## Overview
 
 This project simulates real-world inference traffic against an NVIDIA Triton Inference Server and analyzes system behavior under load.
 
@@ -18,7 +18,7 @@ Unlike default Triton metrics, this system computes true end-to-end latency from
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 ```
 Load Generator → Triton Inference Server → GPU
@@ -59,7 +59,7 @@ Load Generator → Triton Inference Server → GPU
 
 ---
 
-## ⏱️ Latency Measurement Methodology
+## Latency Measurement Methodology
 
 Latency percentiles (p50 / p95 / p99) are computed client-side during load testing.
 
@@ -79,7 +79,7 @@ Client-side latency is also exported to Prometheus as histogram metrics for real
 
 ---
 
-## 📈 Experiments & Results
+## Experiments & Results
 
 | Concurrency | QPS  | p50 Latency | p95 Latency | p99 Latency | GPU Utilization |
 |------------|------|------------|------------|------------|----------------|
@@ -91,7 +91,7 @@ Client-side latency is also exported to Prometheus as histogram metrics for real
 
 ---
 
-## 🔍 Key Observations
+## Key Observations
 
 - Throughput scales nearly linearly until GPU utilization exceeds ~90%
 - Tail latency (p99) increases sharply under high concurrency due to queueing
@@ -100,7 +100,7 @@ Client-side latency is also exported to Prometheus as histogram metrics for real
 
 ---
 
-## 🔍 Bottleneck Analysis
+## Bottleneck Analysis
 
 - Primary bottleneck: GPU compute saturation  
 - Secondary bottleneck: request queueing under high load  
@@ -108,7 +108,7 @@ Client-side latency is also exported to Prometheus as histogram metrics for real
 
 ---
 
-## 🧪 Failure Testing
+## Failure Testing
 
 | Scenario                    | Behavior Observed                   | Recovery Time |
 |---------------------------|------------------------------------|--------------|
@@ -118,7 +118,7 @@ Client-side latency is also exported to Prometheus as histogram metrics for real
 
 ---
 
-## ⚙️ Usage
+## Usage
 
 ### Start Triton Server
 ```bash
@@ -137,7 +137,7 @@ python traffic_generator.py
 
 ---
 
-## 🎯 Key Takeaways
+## Key Takeaways
 
 - Built a production-style GPU inference system
 - Measured and analyzed tail latency (p99) under load
@@ -146,7 +146,7 @@ python traffic_generator.py
 
 ---
 
-## 📌 Future Improvements
+## Future Improvements
 
 - Kubernetes-based GPU scheduling
 - Autoscaling based on GPU utilization and latency
